@@ -14,4 +14,4 @@ You need to import the database or making your own database
 * [AdminLTE](https://adminlte.io/) - The Bootstrap template used  
 
 ## Acknowledgments 
-* [Petanikode](https://www.petanikode.com/codeigniter-database/)for this fruit shop tutorial
+* [Petanikode](https://www.petanikode.com/codeigniter-database/) for this fruit shop tutorial
