@@ -13,13 +13,13 @@ class Products extends CI_CONTROLLER
 
 	public function index()
 	{
-		$data["products"] = $this->product_model->getAll();
+		$data["products"] = $this->products_model->getAll();
 		$this->load->view("admin/products/list", $data);
 	}
 
 	public function add()
 	{
-		$products = $this->product_model;
+		$products = $this->products_model;
 		$validation = $this->form_validation;
 		$validation->set_rules($products->rules());
 
@@ -36,13 +36,13 @@ class Products extends CI_CONTROLLER
 	{
 		if(!isset($id)) redirect ('admin/products');
 
-		$products = $this->product_model;
+		$products = $this->products_model;
 		$validation = $this->form_validation;
 		$validation->set_rules($products->rules());
 
 		if($validation->run())
 		{
-			$products->save();
+			$products->update();
 			$this->session->set_flashdata("success", "Data berhasil disimpan");
 
 		}
@@ -54,7 +54,7 @@ class Products extends CI_CONTROLLER
 	public function delete($id = null)
 	{
 		if(!isset($id)) show_404();
-			if($this->product_model->delete($id)){
+			if($this->products_model->delete($id)){
 			redirect(site_url('admin/products'));
 		}
 	}

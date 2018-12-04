@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Product_model extends CI_MODEL
+class Products_model extends CI_MODEL
 {
 
 	private $_table = "products";
@@ -42,7 +42,7 @@ class Product_model extends CI_MODEL
 		return $this->db->get($this->_table)->result();
 	}
 
-	public function getById()
+	public function getById($id)
 	{
 		//sama seperti query SQL = SELECT * FROM products WHERE product_id = $id;
 		//row digunakan untuk mengambil satu data dari hasil query
@@ -67,7 +67,7 @@ class Product_model extends CI_MODEL
 		$this->name = $post["name"];
 		$this->price = $post["price"];
 		$this->description = $post["description"];
-		$this->db->update($this->_table, $this, array('product_id' => $post["id"]);
+		$this->db->update($this->_table, $this, array('product_id' => $post["id"]));
 	}
 
 	public function delete($id)

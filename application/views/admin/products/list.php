@@ -25,7 +25,7 @@
 									<tr>
 										<th>Name</th>
 										<th>Price</th>
-										<th>Photo</th>
+										<th>Image</th>
 										<th>Description</th>
 										<th>Action</th>
 									</tr>
@@ -47,7 +47,8 @@
 												<?php echo substr($product->description, 0, 120) ?>...
 											</td>
 											<td width="250">
-												<a href="<?php echo site_url('admin/products/edit'.$product->product_id)  ?>" class = "btn btn-small"><i class="fas fa-edit"></i>Edit</a><a onclick="deleteConfirm('<?php echo site_url('admin/products/delete/'.$product->product_id)?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i>Hapus</a>
+												<a href="<?php echo site_url('admin/products/edit/'.$product->product_id)  ?>" class = "btn btn-small"><i class="fas fa-edit"></i>Edit</a>
+												<a onclick="deleteConfirm('<?php echo site_url('admin/products/delete/'.$product->product_id) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i>Hapus</a>
 											</td>
 										</tr>
 									<?php endforeach; ?>
@@ -69,5 +70,12 @@
 		<?php $this->load->view("admin/_partials/modal.php"); ?>
 		<?php $this->load->view("admin/_partials/js.php"); ?>
 
+<script type="text/javascript">
+	function deleteConfirm(url)
+	{
+		$('#btn-delete').attr('href', url);
+		$('#deleteModal').modal();
+	}
+</script>
 </body>
 </html>

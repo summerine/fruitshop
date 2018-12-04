@@ -25,11 +25,13 @@
 
 				<div class="card-body">
 					
-					<form action="<?php base_url('admin/products/add') ?>" method="POST" enctype="multipart/form-data">
+					<form action="<?php base_url('admin/products/edit') ?>" method="POST" enctype="multipart/form-data">
+
+						<input type="hidden" name="id" value="<?php echo $products->product_id; ?>">
 
 						<div class="form-group">
 							<label for="name">Name*</label>
-							<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"  type="text" name="name" placeholder="Product Name">
+							<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"  type="text" name="name" placeholder="Product Name" value="<?php echo $products->name; ?>">
 							<div class="invalid-feedback">
 								<?php echo form_error('name') ?>
 							</div>
@@ -37,7 +39,7 @@
 
 						<div class="form-group">
 							<label for="price">Price</label>
-							<input class="form-control <?php echo form_error('price') ? 'is_invalid':'' ?>" type="number" name="price" min="0" placeholder="Price">
+							<input class="form-control <?php echo form_error('price') ? 'is_invalid':'' ?>" type="number" name="price" min="0" placeholder="Price" value="<?php echo $products->price; ?>">
 							<div class="invalid-feedback">
 								<?php echo form_error('price') ?>
 							</div>
@@ -45,7 +47,7 @@
 
 						<div class="form-group">
 							<label for="image">Image</label>
-							<input class="form-control-file <?php echo form_error('image') ? 'is_invalid':'' ?>" type="file" name="image" placeholder="Image">
+							<input class="form-control-file <?php echo form_error('image') ? 'is_invalid':'' ?>" type="file" name="image" placeholder="Image" value="<?php echo $products->image ?>">
 							<div class="invalid-feedback">
 								<?php echo form_error('image') ?>
 							</div>
@@ -53,7 +55,7 @@
 
 						<div class="form-group">
 							<label for="description">Description</label>
-							<input class="form-control <?php echo form_error('description') ? 'is_invalid':'' ?>" type="text" name="description" placeholder="Write description...">
+							<input class="form-control <?php echo form_error('description') ? 'is_invalid':'' ?>" type="text" name="description" placeholder="Write description..." value="<?php echo $products->description; ?>">
 							<div class="invalid-feedback">
 								<?php echo form_error('description') ?>
 							</div>
@@ -68,7 +70,6 @@
 				</div>
 
 			</div>
-
 			<!-- /.container-fluid -->
 
 			<!-- Sticky footer -->
