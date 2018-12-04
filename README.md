@@ -9,9 +9,9 @@ Make sure to run the program inside the localhost.
 You need to import the database or making your own database
 
 ## Built With
-* [Codeigniter] (https://www.codeigniter.com) - The web framework used
-* [XAMPP] (https://www.apachefriends.org) - The local web server used
-* [AdminLTE] (https://www.adminlte.io/) - The Bootstrap template used  
+* [Codeigniter](https://codeigniter.com) - The web framework used
+* [XAMPP](https://apachefriends.org) - The local web server used
+* [AdminLTE](https://adminlte.io/) - The Bootstrap template used  
 
 ## Acknowledgments 
-* [Petanikode] (https://www.petanikode.com/codeigniter-database/)for this fruit shop tutorial
+* [Petanikode](https://www.petanikode.com/codeigniter-database/) for this fruit shop tutorial
