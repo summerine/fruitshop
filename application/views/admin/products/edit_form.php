@@ -47,7 +47,8 @@
 
 						<div class="form-group">
 							<label for="image">Image</label>
-							<input class="form-control-file <?php echo form_error('image') ? 'is_invalid':'' ?>" type="file" name="image" placeholder="Image" value="<?php echo $products->image ?>">
+							<input class="form-control-file <?php echo form_error('image') ? 'is_invalid':'' ?>" type="file" name="image" />
+							<input type="hidden" name="old_image" value="<?php echo $products->image; ?>">
 							<div class="invalid-feedback">
 								<?php echo form_error('image') ?>
 							</div>

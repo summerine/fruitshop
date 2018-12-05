@@ -56,6 +56,7 @@ class Products_model extends CI_MODEL
 		$this->product_id = uniqid(); //membuat id unik 
 		$this->name = $post["name"]; //isi field name
 		$this->price = $post["price"]; // isi field price
+		$this->image = $this->_uploadImage();
 		$this->description = $post["description"];//isi field description
 		$this->db->insert($this->_table, $this); // simpan ke database
 	}
@@ -66,15 +67,50 @@ class Products_model extends CI_MODEL
 		$this->product_id = $post["id"];
 		$this->name = $post["name"];
 		$this->price = $post["price"];
+
+		if(!empty($_FILES["image"]["name"]))
+		{
+			$this->image = $this->_uploadImage();
+		} else {
+			$this->image = $post["old_image"];
+		}
+
 		$this->description = $post["description"];
 		$this->db->update($this->_table, $this, array('product_id' => $post["id"]));
+
 	}
 
 	public function delete($id)
-	{
+	{	
+		return $this->_deleteImage($id);
 		return $this->db->delete($this->_table, array("product_id" => $id) );
 	}
 
+	private function _uploadImage()
+	{
+		$config['upload_path'] = './upload/products/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['file_name'] = $this->product_id;
+		$config['overwrite'] = true;
+		$config['max_size'] = 1024;
+
+		$this->load->library('upload', $config);
+
+		if($this->upload->do_upload('image')){
+			return $this->upload->data("file_name");
+		}
+		return "default.jpg";
+	}
+
+	private function _deleteImage($id)
+	{
+		$products = $this->getById($id);
+		if($products->image != "default.jpg")
+		{
+			$filename = explode(".", $products->image)[0];
+			return array_map('unlink', glob(FCPATH."upload/products/filename.*"));
+		}
+	}
 }
 
 
